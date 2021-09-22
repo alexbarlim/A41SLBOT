@@ -2,12 +2,12 @@ const Discord = require("discord.js");
 
 module.exports = {
         name: "restart",
-        description: "Restarts the bot",
+        description: "Reinicia o bot",
         async execute(message, args) {
-                const resMsg = ` \`\`\`md\n#Restarting Bot...\nThis may take upto a minute\`\`\``;
+                const resMsg = ` \`\`\`md\n#Reiniciando o bot...\nIsso pode levar até um minuto\`\`\``;
                 if (!message.member.hasPermission("ADMINISTRATOR"))
                         return message.reply(
-                                "You do not have the permissions to do that"
+                                "Você não tem permissão para fazer isso"
                         );
 
                 (async () => {

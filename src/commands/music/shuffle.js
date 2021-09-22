@@ -10,7 +10,7 @@ const {
 
 module.exports = {
     name: "shuffle",
-    description: "Shuffle queue",
+    description: "Fila aleatória",
     execute(message) {
         if (
             message.channel.id != musicChannelOne &&
@@ -22,8 +22,8 @@ module.exports = {
 
         const noQ = new MessageEmbed()
             .setColor(errorColor)
-            .setTitle("Empty Queue")
-            .setDescription(`There is nothing in the queue`);
+            .setTitle("Fila vazia")
+            .setDescription(`Não há nada na fila`);
 
         if (!queue) return message.channel.send(noQ).catch(console.error);
         if (!canModifyQueue(message.member)) return;
@@ -37,8 +37,8 @@ module.exports = {
         message.client.queue.set(message.guild.id, queue);
         const shuffled = new MessageEmbed()
             .setColor(primaryColor)
-            .setTitle("Shuffled")
-            .setDescription(`${message.author} shuffled the queue`);
+            .setTitle("Embaralhada")
+            .setDescription(`${message.author} embaralhou a fila`);
 
         queue.textChannel.send(shuffled).catch(console.error);
     },

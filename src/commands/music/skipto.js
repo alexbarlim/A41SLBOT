@@ -11,7 +11,7 @@ const {
 module.exports = {
   name: "skipto",
   aliases: ["st"],
-  description: "Skip to the selected queue number",
+  description: "Pule para o número da fila selecionado",
   execute(message, args) {
     if (
       message.channel.id != musicChannelOne &&
@@ -21,7 +21,7 @@ module.exports = {
     }
     const noQa = new MessageEmbed()
       .setColor(errorColor)
-      .setTitle("Usage")
+      .setTitle("Uso")
       .setDescription(
         `${message.client.prefix}${module.exports.name} <Queue Number>`
       );
@@ -33,15 +33,15 @@ module.exports = {
 
     const noQ = new MessageEmbed()
       .setColor(errorColor)
-      .setTitle("Empty Queue")
-      .setDescription("There is nothing in the queue");
+      .setTitle("Fila vazia")
+      .setDescription("Não há nada na fila");
 
     if (!queue) return message.channel.send(noQ).catch(console.error);
     if (!canModifyQueue(message.member)) return;
     if (args[0] > queue.songs.length) {
       const noQw = new MessageEmbed()
         .setColor(errorColor)
-        .setTitle("Error!")
+        .setTitle("Erro!")
         .setDescription(`The queue is only ${queue.songs.length} songs long!`);
 
       return message.reply(noQw).catch(console.error);
@@ -60,8 +60,8 @@ module.exports = {
 
     const skipto = new MessageEmbed()
       .setColor(primaryColor)
-      .setTitle("Skipped!")
-      .setDescription(`${message.author} skipped ${args[0] - 1} songs`);
+      .setTitle("Pulada!")
+      .setDescription(`${message.author} pulou ${args[0] - 1} songs`);
 
     queue.textChannel.send(skipto).catch(console.error);
   },

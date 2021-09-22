@@ -11,7 +11,7 @@ const {
 module.exports = {
   name: "skip",
   aliases: ["s"],
-  description: "Skip the currently playing song",
+  description: "Pula a música que está tocando",
   execute(message) {
     if (
       message.channel.id != musicChannelOne &&
@@ -23,16 +23,16 @@ module.exports = {
 
     const noQueue = new MessageEmbed()
       .setColor(errorColor)
-      .setTitle("Error!")
-      .setDescription("There is nothing playing that I could skip for you.");
+      .setTitle("Erro!")
+      .setDescription("Não há nada reproduzindo que eu pudesse pular para você.");
 
     if (!queue) return noQueue.catch(console.error);
     if (!canModifyQueue(message.member)) return;
 
     const skipEmbed = new MessageEmbed()
       .setColor(primaryColor)
-      .setTitle("Skipped")
-      .setDescription(`${message.author} ⏭ skipped the song`);
+      .setTitle("Pulada")
+      .setDescription(`${message.author} ⏭ pulou a música`);
 
     queue.playing = true;
     queue.connection.dispatcher.end();

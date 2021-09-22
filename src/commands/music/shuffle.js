@@ -37,7 +37,7 @@ module.exports = {
         message.client.queue.set(message.guild.id, queue);
         const shuffled = new MessageEmbed()
             .setColor(primaryColor)
-            .setTitle("Embaralhada")
+            .setTitle("Embaralhando")
             .setDescription(`${message.author} embaralhou a fila`);
 
         queue.textChannel.send(shuffled).catch(console.error);

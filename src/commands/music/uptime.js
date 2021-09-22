@@ -5,7 +5,7 @@ module.exports = {
   name: "uptime",
 
   aliases: ["u"],
-  description: "Check the uptime",
+  description: "Verifique o tempo de atividade do bot",
   execute(message) {
     let seconds = Math.floor(message.client.uptime / 1000);
     let minutes = Math.floor(seconds / 60);
@@ -18,9 +18,9 @@ module.exports = {
 
     const uptimeR = new MessageEmbed()
       .setColor(primaryColor)
-      .setTitle("Uptime Duration")
+      .setTitle("Tempo de atividade")
       .setDescription(
-        `**${days}** day(s), **${hours}** hours, **${minutes}** minutes, **${seconds}** seconds`
+        `**${days}** dia(s), **${hours}** hora(s), **${minutes}** minuto(s), **${seconds}** segundo(s)`
       );
 
     return message.reply(uptimeR).catch(console.error);

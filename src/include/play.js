@@ -20,11 +20,11 @@ module.exports = {
 
     const queue = message.client.queue.get(message.guild.id);
     const muiscQueueEnded = new Discord.MessageEmbed()
-      .setDescription("⛔ Music queue ended.")
+      .setDescription("⛔ A fila de músicas terminou.")
       .setColor(errorColor);
 
     const botLeaveChannel = new Discord.MessageEmbed().setDescription(
-      "Disconnected due to inactivity."
+      "Desconectado por inatividade."
     );
 
     if (!song) {
@@ -102,9 +102,9 @@ module.exports = {
     dispatcher.setVolumeLogarithmic(queue.volume / 100);
     const playingEmbed = new Discord.MessageEmbed()
       .setColor(primaryColor)
-      .setTitle("Now Playing")
+      .setTitle("Tocando")
       .setDescription(
-        `**[${song.title}](${song.url})**\n\nRequested by: ${song.user}`
+        `**[${song.title}](${song.url})**\n\nMúsica adicionada por: ${song.user}`
       )
       .setThumbnail(
         song.thumbnail ||
@@ -139,8 +139,8 @@ module.exports = {
           queue.connection.dispatcher.end();
           const skipEmbed = new MessageEmbed()
             .setColor(primaryColor)
-            .setTitle("Skipped")
-            .setDescription(`⏭ skipped the song`);
+            .setTitle("Pulada")
+            .setDescription(`⏭ música pulada`);
 
           queue.textChannel.send(skipEmbed).catch(console.error);
           collector.stop();
@@ -154,8 +154,8 @@ module.exports = {
             queue.connection.dispatcher.pause(true);
             const pausedEmbed = new MessageEmbed()
               .setColor(primaryColor)
-              .setTitle("Paused")
-              .setDescription(`⏸ paused the music`);
+              .setTitle("Pausada")
+              .setDescription(`⏸ música pausada`);
 
             queue.textChannel.send(pausedEmbed).catch(console.error);
           } else {
@@ -163,8 +163,8 @@ module.exports = {
             queue.connection.dispatcher.resume();
             const resumedEmbed = new MessageEmbed()
               .setColor(primaryColor)
-              .setTitle("Resumed")
-              .setDescription(`▶ resumed the music`);
+              .setTitle("Retomada")
+              .setDescription(`▶ música retomada`);
 
             queue.textChannel.send(resumedEmbed).catch(console.error);
           }
@@ -188,7 +188,7 @@ module.exports = {
           reaction.users.remove(user).catch(console.error);
           if (!queue)
             return message.channel
-              .send("There is no queue.")
+              .send("Não há fila.")
               .catch(console.error);
           if (!canModifyQueue(member)) return;
           let songs = queue.songs;
@@ -200,8 +200,8 @@ module.exports = {
           message.client.queue.set(message.guild.id, queue);
           const shuffledEmbed = new MessageEmbed()
             .setColor(primaryColor)
-            .setTitle("Shuffled")
-            .setDescription(`🔀 shuffled the queue`);
+            .setTitle("Embaralhada")
+            .setDescription(`🔀 fila embaralhada`);
 
           queue.textChannel.send(shuffledEmbed).catch(console.error);
           break;
@@ -212,8 +212,8 @@ module.exports = {
           queue.songs = [];
           const stopEmbed = new MessageEmbed()
             .setColor(errorColor)
-            .setTitle("Stopped!")
-            .setDescription(`⏹ stoped the music`);
+            .setTitle("Parada!")
+            .setDescription(`⏹ música parada`);
 
           queue.textChannel.send(stopEmbed).catch(console.error);
           try {

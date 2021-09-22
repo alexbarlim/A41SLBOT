@@ -5,7 +5,7 @@ const os = require("os");
 
 module.exports = {
   name: "botinfo",
-  description: "Bot server status",
+  description: "Status do servidor bot",
   async execute(message, args) {
     let seconds = Math.floor(message.client.uptime / 1000);
     let minutes = Math.floor(seconds / 60);
@@ -23,11 +23,11 @@ module.exports = {
         message.client.user.username,
         message.client.user.displayAvatarURL()
       )
-      .addField(`System Os`, `${os.platform()}`, false)
-      .addField(`Architecture`, `${os.arch()}`, false)
-      .addField(`Processor`, `${os.cpus().map((i) => `${i.model}`)[0]}`, false)
+      .addField(`Sistema Operacional`, `${os.platform()}`, false)
+      .addField(`Arquitetura`, `${os.arch()}`, false)
+      .addField(`Processador`, `${os.cpus().map((i) => `${i.model}`)[0]}`, false)
       .addField(
-        `RAM`,
+        `Memória RAM`,
         `${Math.trunc(
           process.memoryUsage().heapUsed / 1024 / 1000
         )} MB / ${Math.trunc(os.totalmem() / 1024 / 1000)} MB (${Math.round(
@@ -38,17 +38,17 @@ module.exports = {
         false
       )
       .addField(
-        `Server up Time`,
+        `Tempo de funcionamento do servidor`,
         "" +
           `${days} days, ${hours} hours,${minutes} minutes, ${seconds} seconds` +
           "",
         false
       )
 
-      .addField(`Library`, `Discord.js ${Discord.version}`, false)
+      .addField(`Biblioteca`, `Discord.js ${Discord.version}`, false)
       .addField(
-        "Contribute",
-        `https://github.com/BlazeIsClone/A41SLBOT`,
+        "Contribuinte",
+        `https://github.com/alexbarlim/musicbotnode`,
         false
       );
 

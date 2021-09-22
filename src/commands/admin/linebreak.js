@@ -2,11 +2,11 @@ const Discord = require("discord.js");
 
 module.exports = {
         name: "linebreak",
-        description: "Sends an empty message",
+        description: "Envia uma mensagem vazia",
         async execute(message, args) {
                 if (!message.member.hasPermission("ADMINISTRATOR"))
                         return message.reply(
-                                "You do not have the permissions to do that"
+                                "Você não tem permissão para fazer isso"
                         );
                 message.channel.send("‎");
         },

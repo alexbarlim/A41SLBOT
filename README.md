@@ -64,6 +64,39 @@ Modifique o `config.json` e preencha os valores:
   "musicChannelErrorResponse": "⛔ Music commands are only available in **add-music** channel"
 }
 ```
+
+## Executando
+
+Na pasta do jogo, torne o run.sh executável
+```bash
+chmod +x run.sh
+```
+Crie um .service para iniciar junto com o sistema
+```bash
+sudo nano /etc/systemd/system/musicbot.service
+```
+```md
+[Unit]
+Description=musicbot
+After=network.target
+
+[Service]
+Restart=always
+RestartSec=10
+User=alex
+ExecStart=/home/alex/musicbot/run.sh
+
+[Install]
+WantedBy=multi-user.target
+```
+Torne executável
+```bash
+sudo chmod +x /etc/systemd/system/musicbot.service
+```
+Inicie
+```bash
+systemctl daemon-reload; systemctl enable musicbot; systemctl start musicbot
+```
 <br />
 <br />
 <br />

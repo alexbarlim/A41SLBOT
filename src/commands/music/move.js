@@ -12,7 +12,7 @@ const {
 module.exports = {
   name: "move",
   aliases: ["mv"],
-  description: "Move songs to the top of the queue",
+  description: "Mova músicas para o topo da fila",
   execute(message, args) {
     if (
       message.channel.id != musicChannelOne &&
@@ -24,7 +24,7 @@ module.exports = {
     const queue = message.client.queue.get(message.guild.id);
     const noQue = new MessageEmbed()
       .setColor(errorColor)
-      .setDescription("There is no queue to move");
+      .setDescription("Não há fila para mover");
 
     if (!queue) return message.channel.send(noQue).catch(console.error);
     if (!canModifyQueue(message.member)) return;
@@ -32,7 +32,7 @@ module.exports = {
     const errThrow = new MessageEmbed()
       .setColor(errorColor)
       .setTitle("Move")
-      .setDescription(`Usage: ${message.client.prefix}move <Queue Number>`);
+      .setDescription(`Use: ${message.client.prefix}move <Queue Number>`);
 
     if (!args.length || isNaN(args[0]))
       return message.reply(errThrow).catch(console.error);
@@ -44,7 +44,7 @@ module.exports = {
       .setColor(primaryColor)
       .setTitle("Move")
       .setDescription(
-        `${message.author} 📤 moved **${songMoved.title}** to the top of the queue.`
+        `${message.author} 📤 moveu **${songMoved.title}** para o topo da fila.`
       );
 
     queue.textChannel.send(moveQueue).catch(console.error);

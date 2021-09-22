@@ -11,7 +11,7 @@ const {
 module.exports = {
   name: "stop",
   aliases: ["clear"],
-  description: "Stops the music",
+  description: "Para as músicas",
   execute(message) {
     if (
       message.channel.id != musicChannelOne &&
@@ -23,8 +23,8 @@ module.exports = {
 
     const embedA = new MessageEmbed()
       .setColor(errorColor)
-      .setTitle("Empty Queue")
-      .setDescription("There is nothing in the queue");
+      .setTitle("Fila vazia")
+      .setDescription("Não há nada na fila");
 
     if (!queue) return message.reply(embedA).catch(console.error);
     if (!canModifyQueue(message.member)) return;
@@ -34,8 +34,8 @@ module.exports = {
 
     const embedB = new MessageEmbed()
       .setColor(primaryColor)
-      .setTitle("Stopped!")
-      .setDescription(`**${message.author}** stoped the music`);
+      .setTitle("Parada!")
+      .setDescription(`**${message.author}** parou a música`);
 
     queue.textChannel.send(embedB).catch(console.error);
   },

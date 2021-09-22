@@ -19,7 +19,7 @@ const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
 
 module.exports = {
   name: "search",
-  description: "Search and select videos to play",
+  description: "Pesquise e selecione vídeos para reproduzir",
   async execute(message, args) {
     if (
       message.channel.id != musicChannelOne &&
@@ -29,14 +29,14 @@ module.exports = {
     }
 
     const incUsage = new MessageEmbed()
-      .setTitle(`Search songs`)
+      .setTitle(`Pesquisar músicas`)
       .setDescription(
-        `Usage: ${message.client.prefix}${module.exports.name} <Video Name>`
+        `Uso: ${message.client.prefix}${module.exports.name} <Video Name>`
       )
       .setColor(errorColor);
     const errMsgCollector = new MessageEmbed()
-      .setTitle(`Search`)
-      .setDescription("A message collector is already active in this channel.")
+      .setTitle(`Procurar`)
+      .setDescription("Um coletor de mensagens já está ativo neste canal.")
       .setColor(errorColor);
 
     if (!args.length) return message.reply(incUsage).catch(console.error);
@@ -44,20 +44,20 @@ module.exports = {
       return message.reply(errMsgCollector).catch(console.error);
     if (!message.member.voice.channel)
       return message
-        .reply("You need to join a voice channel first!")
+        .reply("Você precisa entrar em um canal de voz primeiro!")
         .catch(console.error);
 
     const search = args.join(" ");
 
     let resultsEmbed = new MessageEmbed()
-      .setTitle(`**Reply with the song number you want to play**`)
-      .setDescription(`Results for: ${search}`)
+      .setTitle(`**Responda com o número da música que deseja tocar**`)
+      .setDescription(`Resultados para: ${search}`)
       .setColor(primaryColor);
 
     const results = await youtube.searchVideos(search, 10);
 
     const noResults = new MessageEmbed()
-      .setDescription("No results found for that search!")
+      .setDescription("Nenhum resultado encontrado para essa pesquisa!")
       .setColor(errorColor);
 
     if (!results.length)
@@ -81,7 +81,7 @@ module.exports = {
     if (!response.first()) {
       message.channel.activeCollector = false;
       return message.channel.send(
-        "Time limit exceeded, the search has been cancelled."
+        "Limite de tempo excedido, a pesquisa foi cancelada."
       );
     }
     const choice =

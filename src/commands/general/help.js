@@ -4,7 +4,7 @@ const { primaryColor } = require("../../../config.json");
 module.exports = {
   name: "help",
   aliases: ["h"],
-  description: "Display all commands and descriptions",
+  description: "Todos os comandos e descrições",
   execute(message) {
     let commands = message.client.commands.array();
 

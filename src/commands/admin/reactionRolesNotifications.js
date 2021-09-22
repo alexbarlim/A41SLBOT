@@ -4,10 +4,10 @@ const { primaryColor } = require("../../../config.json");
 
 module.exports = {
     name: "reactionRolesNotifications",
-    description: "Sends an embed with a list of notifications",
+    description: "Envia uma incorporação com uma lista de notificações",
     async execute(message, args) {
         if (!message.member.hasPermission("ADMINISTRATOR"))
-            return message.reply("You do not have the permissions to do that");
+            return message.reply("Você não tem permissão para fazer isso");
 
         const addRolesAttachment = new MessageEmbed()
             .setImage("https://i.imgur.com/sTQnkvP.png")
@@ -16,7 +16,7 @@ module.exports = {
         const addRolesEmbed = new Discord.MessageEmbed()
             .setColor("#00FF00")
             .setDescription(
-                "**React with the corresponding emoji to recieve notifications.**" +
+                "**Reaja com o emoji correspondente para receber notificações.**" +
                     "\n" +
                     "\n" +
                     "<:announcements_icon:788964246150709318> • Announcements" +

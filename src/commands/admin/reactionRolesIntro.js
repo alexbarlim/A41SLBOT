@@ -4,26 +4,26 @@ const { primaryColor } = require("../../../config.json");
 
 module.exports = {
     name: "reactionRolesIntro",
-    description: "sends an embed with reaction roles introduction",
+    description: "envia um embed com introdução de funções de reação",
     async execute(message, args) {
         const addRolesAttachment = new MessageEmbed()
             .setImage("https://i.imgur.com/w442vDB.png")
             .setColor(primaryColor);
 
         if (!message.member.hasPermission("ADMINISTRATOR"))
-            return message.reply("You do not have the permissions to do that");
+            return message.reply("Você não tem permissão para fazer isso");
 
         const addRolesEmbed = new Discord.MessageEmbed()
             .setColor(primaryColor)
 
             .setDescription(
-                "**By accepting our community rules and guidelines you are assigned the role**" +
+                "**Ao aceitar nossas regras e diretrizes da comunidade, você recebe a função**" +
                     "\n" +
                     "<@&696747023772155956>." +
-                    " Be active and interact with the community to fight your way through the ranks and become one of the elites." +
+                    " Seja ativo e interaja com a comunidade para abrir caminho na hierarquia e se tornar uma das elites." +
                     "\n" +
                     "\n" +
-                    "Good luck and have fun!"
+                    "Boa sorte e divirta-se!"
             );
 
         message.channel.send(addRolesAttachment).catch(console.error);

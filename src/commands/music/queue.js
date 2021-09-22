@@ -11,7 +11,7 @@ module.exports = {
   name: "queue",
   cooldown: 60,
   aliases: ["q"],
-  description: "Show the music queue and now playing.",
+  description: "Mostra a fila de músicas e o que está tocando.",
   async execute(message) {
     if (
       message.channel.id != musicChannelOne &&
@@ -22,15 +22,15 @@ module.exports = {
     const permissions = message.channel.permissionsFor(message.client.user);
     if (!permissions.has(["MANAGE_MESSAGES", "ADD_REACTIONS"]))
       return message.reply(
-        "Missing permission to manage messages or add reactions"
+        "Permissão ausente para gerenciar mensagens ou adicionar reações"
       );
 
     const queue = message.client.queue.get(message.guild.id);
 
     const emptyQueue = new MessageEmbed()
       .setColor(errorColor)
-      .setTitle("Empty Queue")
-      .setDescription("Nothing playing in this server");
+      .setTitle("Fila vazia")
+      .setDescription("Não há nada tocando neste servidor");
 
     if (!queue) return message.channel.send(emptyQueue);
 
@@ -38,7 +38,7 @@ module.exports = {
     const embeds = generateQueueEmbed(message, queue.songs);
 
     const queueEmbed = await message.channel.send(
-      `**Current Page - ${currentPage + 1}/${embeds.length}**`,
+      `**Página atual - ${currentPage + 1}/${embeds.length}**`,
       embeds[currentPage]
     );
 
@@ -63,7 +63,7 @@ module.exports = {
           if (currentPage < embeds.length - 1) {
             currentPage++;
             queueEmbed.edit(
-              `**Current Page - ${currentPage + 1}/${embeds.length}**`,
+              `**Página atual - ${currentPage + 1}/${embeds.length}**`,
               embeds[currentPage]
             );
           }
@@ -71,7 +71,7 @@ module.exports = {
           if (currentPage !== 0) {
             --currentPage;
             queueEmbed.edit(
-              `**Current Page - ${currentPage + 1}/${embeds.length}**`,
+              `**Página atual - ${currentPage + 1}/${embeds.length}**`,
               embeds[currentPage]
             );
           }
@@ -102,11 +102,11 @@ var generateQueueEmbed = (message, queue) => {
       .join("\n");
 
     const embed = new MessageEmbed()
-      .setTitle("Song Queue\n")
+      .setTitle("Fila de músicas\n")
       .setThumbnail(message.guild.iconURL())
       .setColor(primaryColor)
       .setDescription(
-        `**Current Song - [${queue[0].title}](${queue[0].url})**\n\n${info}`
+        `**Música atual - [${queue[0].title}](${queue[0].url})**\n\n${info}`
       );
     embeds.push(embed);
   }

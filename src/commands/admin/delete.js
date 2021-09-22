@@ -4,7 +4,7 @@ const { PREFIX, primaryColor } = require("../../../config.json");
 
 module.exports = {
   name: "delete",
-  description: "Delete chat messages",
+  description: "Excluir mensagens de bate-papo",
   async execute(message, args) {
     if (!message.member.hasPermission("MANAGE_MESSAGES"))
       return message.reply("You do not have the permissions to do that");
@@ -12,13 +12,13 @@ module.exports = {
     const amount = parseInt(args[0]) + 1;
     const exRes = new MessageEmbed()
       .setColor(primaryColor)
-      .setTitle("Delete Command")
-      .setDescription(`Usage: ${PREFIX}delete <number>`);
+      .setTitle("Comando de deletar")
+      .setDescription(`Use: ${PREFIX}delete <number>`);
 
     if (isNaN(amount)) {
       return message.reply(exRes);
     } else if (amount <= 1 || amount > 100) {
-      return message.reply("you need to input a number between 1 and 99.");
+      return message.reply("você precisa inserir um número entre 1 e 99.");
     }
 
     (async () => {
@@ -26,11 +26,11 @@ module.exports = {
         message.channel.bulkDelete(amount, true).catch((err) => {
           console.error(err);
           message.channel.send(
-            ":warning: Due to Discord rules bots can only bulk delete messages that are under 14 days old."
+            ":warning: Devido às regras do Discord, os bots só podem excluir mensagens em massa com menos de 14 dias."
           );
         });
         message
-          .reply(`🗑️ I've deleted \`${amount - 1}\`  messages for you`)
+          .reply(`🗑️ eu deletei \`${amount - 1}\`  mensagens para você`)
           .then((msg) => {
             msg
               .delete({

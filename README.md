@@ -1,3 +1,75 @@
+# Music Bot em Node - PT-BR
+## Instalação
+
+Instale o Curl
+```bash
+sudo apt install curl
+```
+Instale o Node 16+
+```bash
+curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+```
+Instale o NodeJS
+```bash
+sudo apt install -y nodejs
+```
+Instale o NPM
+```bash
+sudo apt install npm
+```
+Instale o GIT
+```bash
+sudo apt install git-all
+```
+Clone o repositório
+```bash
+git clone https://github.com/alexbarlim/musicbotnode
+```
+Entre na pasta e instale as dependências
+```bash
+npm ci --production
+```
+
+## Configurando
+
+Renomei o arquivo `.env.example` para `.env` e preencha as APIs
+⚠ Nunca compartilhe seus tokens ou chaves APIs publicamente 
+
+```markdown
+DISCORD_TOKEN=
+YOUTUBE_API_KEY=
+SOUNDCLOUD_CLIENT_ID=
+ANNOUNCEMENTS_WEBHOOK_URL=
+SPOTIFY_CLIENT_ID=
+SPOTIFY_SECRET_ID=
+```
+
+Modifique o `config.json` e preencha os valores:
+
+```md
+{
+  "PREFIX": "!",
+  "MAX_PLAYLIST_SIZE": 500,
+  "STAY_TIME": 300,
+  "primaryColor": "#17d6d5",
+  "errorColor": "#EF522F",
+  "musicChannelOne": 514444518494568458,
+  "musicChannelTwo": null,
+  "welcomeChannel": "spawn-despawn",
+  "goodbyeChannel": "spawn-despawn",
+  "auditLogChannel": "🔑audit-log",
+  "guildId": 463027132243771403,
+  "memesChannelId": 769761743965782055,
+  "memberCountChannelName": "member-count",
+  "musicChannelErrorResponse": "⛔ Music commands are only available in **add-music** channel"
+}
+```
+<br />
+<br />
+<br />
+<br />
+<br />
+# ORIGINAL
 <div align="center">
 <img src="https://media.giphy.com/media/kU0et9AnjV2PrWTkS7/giphy.gif" width="500" align="center" />
   

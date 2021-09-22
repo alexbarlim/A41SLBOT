@@ -31,7 +31,7 @@ module.exports = {
   name: "playlist",
   cooldown: 5,
   aliases: ["pl"],
-  description: "Play a playlist or an album",
+  description: "Toque uma lista de reprodução ou um álbum",
   async execute(message, args) {
     if (
       message.channel.id != musicChannelOne &&
@@ -45,7 +45,7 @@ module.exports = {
     if (!args.length) {
       const pl = new MessageEmbed()
         .setColor(errorColor)
-        .setTitle("Usage")
+        .setTitle("Uso")
         .setDescription(
           `${message.client.prefix}playlist <YouTube Playlist URL | Playlist Name>`
         );
@@ -54,24 +54,24 @@ module.exports = {
     }
     if (!channel)
       return message
-        .reply("You need to join a voice channel first!")
+        .reply("Você precisa entrar em um canal de voz primeiro!")
         .catch(console.error);
 
     const permissions = channel.permissionsFor(message.client.user);
     if (!permissions.has("CONNECT")) {
       const nullVC = new MessageEmbed()
         .setColor(errorColor)
-        .setTitle("Error!")
-        .setDescription("Cannot connect to voice channel, missing permissions");
+        .setTitle("Erro!")
+        .setDescription("Não é possível conectar ao canal de voz, permissões ausentes");
 
       return message.reply(nullVC);
     }
     if (!permissions.has("SPEAK")) {
       const errVC = new MessageEmbed()
         .setColor(errorColor)
-        .setTitle("Voice Channel Error")
+        .setTitle("Erro no canal de voz")
         .setDescription(
-          "I cannot speak in this voice channel, make sure I have the proper permissions"
+          "Não posso falar neste canal de voz, certifique-se de que tenho as permissões adequadas"
         );
 
       return message.reply(errVC);
@@ -79,9 +79,9 @@ module.exports = {
     if (serverQueue && channel !== message.guild.me.voice.channel) {
       const sameVcErr = new MessageEmbed()
         .setColor(errorColor)
-        .setTitle("Error!")
+        .setTitle("Erro!")
         .setDescription(
-          `You must be in the same channel as ${message.client.user}`
+          `Você deve estar no mesmo canal que ${message.client.user}`
         );
 
       return message.reply(sameVcErr).catch(console.error);
@@ -113,7 +113,7 @@ module.exports = {
       try {
         waitMessage = await message.channel.send(
           new MessageEmbed()
-            .setDescription("⏳fetching playlist...")
+            .setDescription("⏳ buscando lista de reprodução...")
             .setColor(primaryColor)
         );
         let playlistTrack = await getTracks(url);
@@ -161,13 +161,13 @@ module.exports = {
 
         const playlistNotFound = new MessageEmbed()
           .setColor(errorColor)
-          .setTitle("Not Found")
-          .setDescription("Playlist Not Found");
+          .setTitle("Não encontrado")
+          .setDescription("Playlist não encontrada");
         return message.reply(playlistNotFound);
       }
     } else if (scdl.isValidUrl(args[0])) {
       if (args[0].includes("/sets/")) {
-        message.channel.send("⌛ fetching the playlist...");
+        message.channel.send("⌛ buscando a lista de reprodução...");
         playlist = await scdl.getSetInfo(args[0], SOUNDCLOUD_CLIENT_ID);
         videos = playlist.tracks.map((track) => ({
           title: track.title,
@@ -207,7 +207,7 @@ module.exports = {
       : queueConstruct.songs.push(...newSongs);
 
     let playlistEmbed = new MessageEmbed()
-      .setTitle("Playlist Added")
+      .setTitle("Lista de reprodução adicionada")
       .setDescription(
         newSongs.map((song, index) => `\`${index + 1}\` ${song.title}`)
       )
@@ -218,9 +218,9 @@ module.exports = {
     if (playlistEmbed.description.length >= 2048)
       playlistEmbed.description =
         playlistEmbed.description.substr(0, 2007) +
-        "\nPlaylist larger than character limit...";
+        "\nPlaylist maior que o limite de caracteres...";
 
-    message.channel.send(`${message.author} Started a playlist`, playlistEmbed);
+    message.channel.send(`${message.author} iniciou uma lista de reprodução`, playlistEmbed);
 
     if (!serverQueue) {
       message.client.queue.set(message.guild.id, queueConstruct);
@@ -236,8 +236,8 @@ module.exports = {
 
         const unableJoinVC = new MessageEmbed()
           .setColor(errorColor)
-          .setTitle("Error!")
-          .setDescription(`Could not join the channel: ${error.message}`);
+          .setTitle("Erro!")
+          .setDescription(`Não foi possível entrar no canal: ${error.message}`);
 
         return message.channel.send(unableJoinVC).catch(console.error);
       }

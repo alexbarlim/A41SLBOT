@@ -7,14 +7,14 @@ webhookUrl += "/";
 const res = webhookUrl.match("https://.+/api/webhooks/([^/]+)/([^/]+)/");
 
 module.exports = {
-  name: "announce",
-  description: "Sends an announcement",
+  name: "anunciar",
+  description: "Envia um anúncio",
   async execute(message, args) {
     const webhookID = res[1];
     const webhookToken = res[2];
 
     if (!message.member.hasPermission("ADMINISTRATOR"))
-      return message.reply("You do not have the permissions to do that");
+      return message.reply("Você não tem permissão para fazer isso");
     const webhookClient = new Discord.WebhookClient(webhookID, webhookToken);
     args = message.content.slice(9).trim();
     var announcement = "";

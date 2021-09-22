@@ -11,7 +11,7 @@ const {
 module.exports = {
   name: "loop",
   aliases: ["l"],
-  description: "Toggle music loop",
+  description: "Ativa o loop na música",
   execute(message) {
     if (
       message.channel.id != musicChannelOne &&

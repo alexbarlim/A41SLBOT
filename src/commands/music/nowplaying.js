@@ -11,7 +11,7 @@ const {
 module.exports = {
     name: "nowplaying",
     aliases: ["np"],
-    description: "Show now playing song",
+    description: "Mostra o que está tocando",
     execute(message) {
         if (
             message.channel.id != musicChannelOne &&
@@ -22,8 +22,8 @@ module.exports = {
         const queue = message.client.queue.get(message.guild.id);
         const emptyQueue = new MessageEmbed()
             .setColor(errorColor)
-            .setTitle("Empty Queue")
-            .setDescription("There is nothing playing");
+            .setTitle("Fila vazia")
+            .setDescription("Não há nada tocando");
 
         if (!queue) return message.reply(emptyQueue).catch(console.error);
         const song = queue.songs[0];

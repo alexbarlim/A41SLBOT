@@ -2,15 +2,15 @@ const Discord = require("discord.js");
 
 module.exports = {
     name: "leave",
-    description: "Disconnects the bot from your voice channel",
+    description: "Desconecta o bot do seu canal de voz",
     async execute(message, args) {
         if (!message.member.hasPermission("CONNECT"))
-            return message.reply("You do not have the permissions to do that");
+            return message.reply("Você não tem permissão para fazer isso");
 
         if (message.member.voice.channel) {
             connection = message.member.voice.channel.leave();
         } else {
-            message.reply("Im not in this voice channel to leave!");
+            message.reply("Eu não estou neste canal de voz para sair!");
         }
     },
 };

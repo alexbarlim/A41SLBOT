@@ -11,7 +11,7 @@ const {
 module.exports = {
   name: "resume",
   aliases: ["r"],
-  description: "Resume currently playing music",
+  description: "Retomar a música atual",
   execute(message) {
     if (
       message.channel.id != musicChannelOne &&
@@ -22,8 +22,8 @@ module.exports = {
     const queue = message.client.queue.get(message.guild.id);
     const nothingPlaying = new MessageEmbed()
       .setColor(errorColor)
-      .setTitle("Error!")
-      .setDescription(`There is nothing playing`);
+      .setTitle("Erro!")
+      .setDescription(`Não há nada tocando`);
 
     if (!queue) return message.reply(nothingPlaying).catch(console.error);
     if (!canModifyQueue(message.member)) return;
@@ -33,17 +33,17 @@ module.exports = {
       queue.connection.dispatcher.resume();
       const resumed = new MessageEmbed()
         .setColor(primaryColor)
-        .setTitle("Resumed")
-        .setDescription(`${message.author} ▶ resumed the music`);
+        .setTitle("Retomado")
+        .setDescription(`${message.author} ▶ retomou a música`);
 
       return queue.textChannel.send(resumed).catch(console.error);
     }
 
-    return message.reply("The queue is not paused.").catch(console.error);
+    return message.reply("A fila não está pausada.").catch(console.error);
     const notPaused = new MessageEmbed()
       .setColor(errorColor)
       .setTitle("Error!")
-      .setDescription(`The song/queue is not paused`);
+      .setDescription(`A música/fila não está pausada`);
 
     return message.reply(notPaused).catch(console.error);
   },

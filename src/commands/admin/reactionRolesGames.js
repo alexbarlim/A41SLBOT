@@ -4,20 +4,20 @@ const { primaryColor } = require("../../../config.json");
 
 module.exports = {
     name: "reactionRolesGames",
-    description: "Sends an embed with a list of games",
+    description: "Envia uma incorporação com uma lista de jogos",
     async execute(message, args) {
         const addRolesAttachment = new MessageEmbed()
             .setImage("https://i.imgur.com/XzvxWtQ.png")
             .setColor(primaryColor);
 
         if (!message.member.hasPermission("ADMINISTRATOR"))
-            return message.reply("You do not have the permissions to do that");
+            return message.reply("Você não tem permissão para fazer isso");
 
         const addRolesEmbed = new Discord.MessageEmbed()
             .setColor(primaryColor)
 
             .setDescription(
-                "**React to this message with the following emojis corresponding to the games you play.**" +
+                "**Reaja a esta mensagem com os seguintes emojis correspondentes aos jogos que você joga.**" +
                     "\n" +
                     "\n" +
                     "<:lol:788452092935012362> • League of Legends" +

@@ -10,7 +10,7 @@ const {
 
 module.exports = {
   name: "pause",
-  description: "Pause the currently playing music",
+  description: "Pause a música que está tocando",
   execute(message) {
     if (
       message.channel.id != musicChannelOne &&
@@ -22,8 +22,8 @@ module.exports = {
     const emptyQueue = new MessageEmbed()
       .setColor(errorColor)
       .setTimestamp()
-      .setTitle("Empty Queue")
-      .setDescription("There is nothing playing");
+      .setTitle("Fila vazia")
+      .setDescription("Não há nada tocando");
 
     if (!queue) return message.reply(emptyQueue).catch(console.error);
     if (!canModifyQueue(message.member)) return;
@@ -35,7 +35,7 @@ module.exports = {
         .setColor(primaryColor)
         .setTimestamp()
         .setTitle("Paused")
-        .setDescription(`${message.author} ⏸ paused the music`);
+        .setDescription(`${message.author} ⏸ pausou a música`);
 
       return queue.textChannel.send(paused).catch(console.error);
     }

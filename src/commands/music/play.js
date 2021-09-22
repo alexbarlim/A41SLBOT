@@ -26,7 +26,7 @@ module.exports = {
   name: "play",
   cooldown: 3,
   aliases: ["p"],
-  description: "Plays audio from YouTube or Soundcloud",
+  description: "Reproduz músicas do YouTube ou Soundcloud",
   async execute(message, args) {
     const { channel } = message.member.voice;
 
@@ -35,8 +35,8 @@ module.exports = {
     const requiredVC = new MessageEmbed()
       .setColor(errorColor)
       .setAuthor(`${message.author.tag}`)
-      .setTitle("Error!")
-      .setDescription("Please join a voice channel before using this command");
+      .setTitle("Erro!")
+      .setDescription("Por favor, entre em um canal de voz antes de usar este comando");
 
     if (
       message.channel.id != musicChannelOne &&
@@ -51,9 +51,9 @@ module.exports = {
         .setColor(errorColor)
         .setTimestamp()
         .setAuthor(`${message.author.tag}`)
-        .setTitle("Error!")
+        .setTitle("Erro!")
         .setDescription(
-          `You must be in the same channel as ${message.client.user}`
+          `Você deve estar no mesmo canal que ${message.client.user}`
         );
 
       return message.channel.send(sameVC).catch(console.error);
@@ -62,7 +62,7 @@ module.exports = {
       .setColor(errorColor)
       .setTitle("Play")
       .setDescription(
-        `Usage: ${message.client.prefix}play <YouTube URL | Spotify Song Link | Soundcloud URL>`
+        `Use: ${message.client.prefix}play <YouTube URL | Spotify Song Link | Soundcloud URL>`
       );
 
     if (!args.length) return message.reply(argsThrow).catch(console.error);
@@ -72,9 +72,9 @@ module.exports = {
       const vcError = new MessageEmbed()
         .setColor(errorColor)
         .setTimestamp()
-        .setTitle("Voice Channel Error!")
+        .setTitle("Erro de canal de voz!")
         .setDescription(
-          "Cannot connect to the voice channel, Missing Permissions"
+          "Não é possível conectar ao canal de voz, permissões ausentes"
         );
 
       return message.reply(vcError);
@@ -86,7 +86,7 @@ module.exports = {
         .setAuthor(`${message.author.tag}`)
         .setTitle("Audio Error!")
         .setDescription(
-          "I cannot speak in this voice channel, make sure I have the proper permissions"
+          "Não posso falar neste canal de voz, certifique-se de que tenho as permissões adequadas"
         );
 
       return message.channel.send(unableSpeak);
@@ -124,7 +124,7 @@ module.exports = {
               .execute(message, [res.headers.location]);
           } else {
             return message
-              .reply("No content could be found at that url.")
+              .reply("Nenhum conteúdo foi encontrado nessa url.")
               .catch(console.error);
           }
         });
@@ -138,7 +138,7 @@ module.exports = {
           )
           .catch(console.error);
       }
-      return message.reply("Following url redirection...").catch(console.error);
+      return message.reply("Seguindo redirecionamento de url ...").catch(console.error);
     }
 
     const queueConstruct = {
@@ -182,7 +182,7 @@ module.exports = {
       } catch (err) {
         console.log(err);
         const throwErrSpotify = new MessageEmbed().setDescription(
-          `Oops.. There was an error! \n` + err
+          `Oops ... Ocorreu um erro! \n` + err
         );
         return message.channel.send(throwErrSpotify);
       }
@@ -278,8 +278,8 @@ module.exports = {
       const unableJoin = new MessageEmbed()
         .setColor(errorColor)
         .setTimestamp()
-        .setTitle("Error!")
-        .setDescription(`Could not join join the channel: ${error}`);
+        .setTitle("Erro!")
+        .setDescription(`Não foi possível entrar no canal: ${error}`);
 
       return message.channel.send(unableJoin).catch(console.error);
     }

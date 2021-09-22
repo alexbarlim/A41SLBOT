@@ -10,7 +10,7 @@ const {
 
 module.exports = {
   name: "remove",
-  description: "Remove song from the queue",
+  description: "Remove músicas da fila",
   execute(message, args) {
     if (
       message.channel.id != musicChannelOne &&
@@ -21,20 +21,20 @@ module.exports = {
     const queue = message.client.queue.get(message.guild.id);
     const emptyQueue = new MessageEmbed()
       .setColor(errorColor)
-      .setTitle("Empty Queue")
-      .setDescription("There is nothing in the queue");
+      .setTitle("Fila vazia")
+      .setDescription("Não há nada na fila");
 
     if (!queue) return message.channel.send(emptyQueue).catch(console.error);
     if (!canModifyQueue(message.member)) return;
 
     const noArgs = new MessageEmbed()
       .setColor(errorColor)
-      .setTitle("Usage")
+      .setTitle("Uso")
       .setDescription(`${message.client.prefix}remove <Queue Number>`);
 
     const NaNer = new MessageEmbed()
       .setColor(errorColor)
-      .setTitle("Usage")
+      .setTitle("Uso")
       .setDescription(`${message.client.prefix}remove <Queue Number>`);
 
     if (!args.length) return message.reply(noArgs);
@@ -44,9 +44,9 @@ module.exports = {
 
     const remov = new MessageEmbed()
       .setColor(primaryColor)
-      .setTitle("Song Removed from Queue")
+      .setTitle("Música removida da fila")
       .setDescription(
-        `${message.author} removed **${song[0].title}** from the queue`
+        `${message.author} removeu **${song[0].title}** da fila`
       );
 
     queue.textChannel.send(remov);

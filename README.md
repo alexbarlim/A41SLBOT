@@ -67,11 +67,11 @@ Modifique o `config.json` e preencha os valores:
 
 ## Executando
 
-Na pasta do bot, torne o run.sh executável
+Na pasta do bot, torne o `run.sh` executável
 ```bash
 chmod +x run.sh
 ```
-Crie um .service para iniciar junto com o sistema
+Crie um `.service` para iniciar junto com o sistema
 ```bash
 sudo nano /etc/systemd/system/musicbot.service
 ```

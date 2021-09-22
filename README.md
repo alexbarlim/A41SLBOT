@@ -69,7 +69,9 @@ Modifique o `config.json` e preencha os valores:
 <br />
 <br />
 <br />
+
 # ORIGINAL
+
 <div align="center">
 <img src="https://media.giphy.com/media/kU0et9AnjV2PrWTkS7/giphy.gif" width="500" align="center" />
   

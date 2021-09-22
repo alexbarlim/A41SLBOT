@@ -24,8 +24,8 @@ module.exports = {
 
     const emptyQueue = new MessageEmbed()
       .setColor(errorColor)
-      .setTitle("Empty Queue")
-      .setDescription("There is nothing playing");
+      .setTitle("Fila vazia")
+      .setDescription("Não há nada tocando");
 
     if (!queue) return message.reply(emptyQueue);
     if (!canModifyQueue(message.member)) return;
@@ -35,7 +35,7 @@ module.exports = {
       .setColor(primaryColor)
       .setTitle("Loop")
       .setDescription(
-        `Loop is now set to ${queue.loop ? "**on**" : "**off**"}`
+        `Loop agora está definido para ${queue.loop ? "**ligado**" : "**desligado**"}`
       );
     return queue.textChannel.send(loop);
   },

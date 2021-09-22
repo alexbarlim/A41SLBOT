@@ -67,7 +67,7 @@ Modifique o `config.json` e preencha os valores:
 
 ## Executando
 
-Na pasta do jogo, torne o run.sh executável
+Na pasta do bot, torne o run.sh executável
 ```bash
 chmod +x run.sh
 ```

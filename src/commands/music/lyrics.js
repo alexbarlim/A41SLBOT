@@ -11,7 +11,7 @@ const {
 module.exports = {
   name: "lyrics",
   aliases: ["ly"],
-  description: "Get lyrics for the currently playing song",
+  description: "Obtenha a letra da música que está tocando",
   async execute(message) {
     if (
       message.channel.id != musicChannelOne &&
@@ -22,17 +22,17 @@ module.exports = {
     const queue = message.client.queue.get(message.guild.id);
     const emptyQueue = new MessageEmbed()
       .setColor(errorColor)
-      .setTitle("Empty Queue")
-      .setDescription("There is nothing playing");
+      .setTitle("Fila vazia")
+      .setDescription("Não há nada tocando");
 
     if (!queue) return message.channel.send(emptyQueue);
     let lyrics = null;
 
     try {
       lyrics = await lyricsFinder(queue.songs[0].title, "");
-      if (!lyrics) lyrics = `No lyrics found for ${queue.songs[0].title}.`;
+      if (!lyrics) lyrics = `Nehuma letra encontrada de ${queue.songs[0].title}.`;
     } catch (error) {
-      lyrics = `No lyrics found for ${queue.songs[0].title}.`;
+      lyrics = `Nenhuma letra encontrada de ${queue.songs[0].title}.`;
     }
 
     let lyricsEmbed = new MessageEmbed()

@@ -4,7 +4,7 @@ module.exports = {
         name: "restart",
         description: "Reinicia o bot",
         async execute(message, args) {
-                const resMsg = ` \`\`\`md\n#Reiniciando o bot...\nIsso pode levar até um minuto\`\`\``;
+                const resMsg = ` \`\`\`md\nReiniciando o bot...\nIsso pode levar até um minuto\`\`\``;
                 if (!message.member.hasPermission("ADMINISTRATOR"))
                         return message.reply(
                                 "Você não tem permissão para fazer isso"

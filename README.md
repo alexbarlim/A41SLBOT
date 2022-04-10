@@ -78,7 +78,7 @@ sudo nano /etc/systemd/system/musicbot.service
 ```md
 [Unit]
 Description=musicbot
-After=network.target
+After=network-online.target
 
 [Service]
 Restart=always

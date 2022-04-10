@@ -75,6 +75,9 @@ Crie um `.service` para iniciar junto com o sistema
 ```bash
 sudo nano /etc/systemd/system/musicbot.service
 ```
+
+### Opção 1
+
 ```md
 [Unit]
 Description=musicbot
@@ -89,6 +92,24 @@ ExecStart=/home/alex/musicbot/run.sh
 [Install]
 WantedBy=multi-user.target
 ```
+
+### Opção 2
+```md
+[Unit]
+Description=musicbot
+After=network-online.target
+
+[Service]
+Restart=always
+RestartSec=10
+User=root
+WorkingDirectory=/mnt/musicbotnode
+ExecStart=npm start
+
+[Install]
+WantedBy=multi-user.target
+```
+
 Torne executável
 ```bash
 sudo chmod +x /etc/systemd/system/musicbot.service
